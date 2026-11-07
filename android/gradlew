@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+set -eu
+VERSION="8.13"
+BASE="${GRADLE_USER_HOME:-$HOME/.gradle}/wrapper/dists/el-piston-gradle-$VERSION"
+GRADLE="$BASE/gradle-$VERSION/bin/gradle"
+if [ ! -x "$GRADLE" ]; then
+  mkdir -p "$BASE"
+  ARCHIVE="$BASE/gradle-$VERSION-bin.zip"
+  if [ ! -f "$ARCHIVE" ]; then
+    if command -v curl >/dev/null 2>&1; then
+      curl -fL "https://services.gradle.org/distributions/gradle-$VERSION-bin.zip" -o "$ARCHIVE"
+    else
+      wget -O "$ARCHIVE" "https://services.gradle.org/distributions/gradle-$VERSION-bin.zip"
+    fi
+  fi
+  unzip -q -o "$ARCHIVE" -d "$BASE"
+fi
+exec "$GRADLE" "$@"
