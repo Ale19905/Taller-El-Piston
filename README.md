@@ -35,13 +35,3 @@ La base se crea en el directorio de documentos privado de Android como `el_pisto
 ## Datos y privacidad
 
 Todos los datos permanecen en el dispositivo. Android los elimina si se desinstala la aplicación o si se borran sus datos; antes de instalar una versión que borre esos datos, realiza una copia desde Android. La app no incluye sincronización entre dispositivos.
-
-## Capturas
-
-La carpeta `capturas/` está preparada para las imágenes reales tomadas durante la ejecución en Android. Para guardarlas desde un dispositivo conectado, abre cada pantalla y ejecuta:
-
-```bash
-adb exec-out screencap -p > capturas/01-inicio.png
-```
-
-Repite el comando para órdenes, detalle, clientes, stock y reportes cambiando el nombre del archivo.
